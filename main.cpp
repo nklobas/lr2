@@ -7,11 +7,11 @@
 class Array {
 private:
     std::vector<double> data;
-    int lowerBound;
+    int lowerBound1;
     int upperBound;
 
 public:
-    Array(int lower, int upper) : lowerBound(lower), upperBound(upper) {
+    Array(int lower, int upper) : lowerBound1(lower), upperBound(upper) {
         data.resize(upper - lower + 1);
     }
 
@@ -19,11 +19,11 @@ public:
     }
 
     double& operator[](int index) {
-        return data[index - lowerBound];
+        return data[index - lowerBound1];
     }
 
     const double& operator[](int index) const {
-        return data[index - lowerBound];
+        return data[index - lowerBound1];
     }
 
     void print() const {
@@ -81,12 +81,12 @@ public:
 
 // Определение функций для арифметических операций с двумя массивами
 Array addArrays(const Array& arr1, const Array& arr2) {
-    int lowerBound = std::min(arr1.lowerBound, arr2.lowerBound);
+    int lowerBound1 = std::min(arr1.lowerBound1, arr2.lowerBound1);
     int upperBound = std::max(arr1.upperBound, arr2.upperBound);
 
-    Array result(lowerBound, upperBound);
+    Array result(lowerBound1, upperBound);
 
-    for (int i = lowerBound; i <= upperBound; ++i) {
+    for (int i = lowerBound1; i <= upperBound; ++i) {
         result[i] = arr1[i] + arr2[i];
     }
 
@@ -94,12 +94,12 @@ Array addArrays(const Array& arr1, const Array& arr2) {
 }
 
 Array subtractArrays(const Array& arr1, const Array& arr2) {
-    int lowerBound = std::min(arr1.lowerBound, arr2.lowerBound);
+    int lowerBound1 = std::min(arr1.lowerBound1, arr2.lowerBound1);
     int upperBound = std::max(arr1.upperBound, arr2.upperBound);
 
-    Array result(lowerBound, upperBound);
+    Array result(lowerBound1, upperBound);
 
-    for (int i = lowerBound; i <= upperBound; ++i) {
+    for (int i = lowerBound1; i <= upperBound; ++i) {
         result[i] = arr1[i] - arr2[i];
     }
 
@@ -107,12 +107,12 @@ Array subtractArrays(const Array& arr1, const Array& arr2) {
 }
 
 Array multiplyArrays(const Array& arr1, const Array& arr2) {
-    int lowerBound = std::min(arr1.lowerBound, arr2.lowerBound);
+    int lowerBound1 = std::min(arr1.lowerBound1, arr2.lowerBound1);
     int upperBound = std::max(arr1.upperBound, arr2.upperBound);
 
-    Array result(lowerBound, upperBound);
+    Array result(lowerBound1, upperBound);
 
-    for (int i = lowerBound; i <= upperBound; ++i) {
+    for (int i = lowerBound1; i <= upperBound; ++i) {
         result[i] = arr1[i] * arr2[i];
     }
 
@@ -120,12 +120,12 @@ Array multiplyArrays(const Array& arr1, const Array& arr2) {
 }
 
 Array divideArrays(const Array& arr1, const Array& arr2) {
-    int lowerBound = std::min(arr1.lowerBound, arr2.lowerBound);
+    int lowerBound1 = std::min(arr1.lowerBound1, arr2.lowerBound1);
     int upperBound = std::max(arr1.upperBound, arr2.upperBound);
 
-    Array result(lowerBound, upperBound);
+    Array result(lowerBound1, upperBound);
 
-    for (int i = lowerBound; i <= upperBound; ++i) {
+    for (int i = lowerBound1; i <= upperBound; ++i) {
         if (arr2[i] != 0.0) {
             result[i] = arr1[i] / arr2[i];
         }
@@ -250,7 +250,7 @@ int main() {
     tempArray1 = array1;
     tempArray2 = array2;
     Array prodArray = multiplyArrays(tempArray1, tempArray2);
-   
+
 
     std::cout << "summa= ";
     sumArray.print();
@@ -266,7 +266,7 @@ int main() {
     Array divArray = divideArrays(tempArray1, tempArray2);
    // std::cout << "delenie= ";
    // divArray.print();
-  
+
     while (true) {
         int action, index;
         std::cin >> action;
